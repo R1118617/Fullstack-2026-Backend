@@ -1,10 +1,9 @@
 from fastapi import APIRouter
 import database
-from models.planning import Attendants
+from models.student4_models import Attendants
 from queries import student4_queries as queries
 import datetime
 import random
-import models
 
 router = APIRouter()
 
