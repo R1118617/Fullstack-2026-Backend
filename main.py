@@ -8,7 +8,8 @@ from routes import student1_endpoints
 middleware = [
     Middleware(
         CORSMiddleware,
-        allow_origins=['https://example.org'],
+        # allow_origins=['https://example.org'],  FOUT
+        allow_origins=config.allowed_origins.split(","),
         allow_credentials=True,
         allow_methods=['*'],
         allow_headers=['*']
