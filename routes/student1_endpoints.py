@@ -1,7 +1,7 @@
 from fastapi import APIRouter
 import database
 import queries.student1_queries as st1_queries
-from pydantic import BaseModel  # Convert POST Json-body to Python-data
+from models import student1_models as st1_models
 
 router = APIRouter()
 
@@ -69,15 +69,8 @@ def get_afspraken():
     return {"afspraken": result}
 
 # POST-STATEMENTS
-
-# POST a new "afspraak"
-class AfspraakInput(BaseModel):
-    coachid: int
-    klantnaam: str
-    datum: str
-
 @router.post("/afspraak")
-def create_afspraak(data: AfspraakInput):
+def create_afspraak(data: st1_models.AfspraakInput):
     query = st1_queries.insert_afspraak_query
     params = (data.coachid, data.klantnaam, data.datum)
 
