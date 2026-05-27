@@ -1,0 +1,1 @@
+random_review = "Select firstname, lastname, review FROM fitness.member WHERE review IS NOT NULL ORDER BY RANDOM() LIMIT 1"
