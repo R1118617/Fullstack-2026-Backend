@@ -1,8 +1,12 @@
 from fastapi import APIRouter
 import database
+import queries.student3_queries
 from queries import student3_queries
+from models import student3_models
 
 router = APIRouter()
+
+# GET REQUESTS
 
 @router.get("/random_review")
 def get_random_review():
@@ -30,3 +34,19 @@ def get_available_trainers():
     for trainer in trainers:
         trainers_return.append({"firstName": trainer[0], "lastName": trainer[1], "speciality": trainer[2]})
     return trainers_return
+
+
+# POST REQUESTS
+
+@router.post("/create_member")
+def create_member(member: student3_models.Member):
+    query = queries.student3_queries.create_new_member
+    database.execute_sql_query(query, (
+        member.lastName,
+        member.firstName,
+        member.email,
+        member.membershipID,
+        member.trainerID,
+        member.review,
+    ))
+    return member
