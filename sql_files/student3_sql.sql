@@ -25,6 +25,7 @@ CREATE TABLE IF NOT EXISTS fitness.member (
     email varchar(50) NOT NULL UNIQUE,
     membershipID int NOT NULL,
     trainerID int,
+    review varchar(200),
     CONSTRAINT FK_membership_member
         FOREIGN KEY (membershipID)
         REFERENCES fitness.membership(membershipID),
@@ -62,5 +63,18 @@ INSERT INTO fitness.member (lastName, firstName, email, membershipID, trainerID)
     ('Loopband', 'Linda', 'linda.ren@fictiefmail.com', 1, 7),
     ('Lifting', 'Luke', 'luke.sky-lifter@fictiefmail.com', 2, 3),
     ('Cheatday', 'Chantal', 'chantal.pizza@fictiefmail.com', 1, NULL),
-    ('Spiegel', 'Silvia', 'silvia.selfie@fictiefmail.com', 1, NULL)
+    ('Spiegel', 'Silvia', 'silvia.selfie@fictiefmail.com', 1, NULL),
+    ('Legday', 'Mark', 'mark.legday@fictiefmail.com', 2, 4)
 ;
+
+UPDATE fitness.member SET review = 'De Gigachad formule is legendarisch, en Anna Kilo laat me zweten!' WHERE email = 'Henk2.Henkzoon@fictiefmail.com';
+UPDATE fitness.member SET review = 'Basis is prima, ik heb geen trainer nodig om naar de spiegels te kijken.' WHERE email = 'sjors.loves.gainz@fictiefmail.com';
+UPDATE fitness.member SET review = 'Lekker rustig trainen met het Premium pakket, heerlijk.' WHERE email = 'zarah.cardio@fictiefmail.com';
+UPDATE fitness.member SET review = 'Jos is de koning van de machines, Gigachad waardig.' WHERE email = 'boris.benchpress@fictiefmail.com';
+UPDATE fitness.member SET review = 'De vanilleshakes in de kantine zijn beter dan de loopbanden.' WHERE email = 'vera.vanilla.shake@fictiefmail.com';
+UPDATE fitness.member SET review = 'Premium is top, maar die spierpijn is minder.' WHERE email = 'sam.auwtch@fictiefmail.com';
+UPDATE fitness.member SET review = 'Luna Storm en haar Crossfit lessen zijn een stormvloed aan energie!' WHERE email = 'eddy.shakey@fictiefmail.com';
+UPDATE fitness.member SET review = 'Ben Baks is een legende, ook al is hij nooit beschikbaar.' WHERE email = 'linda.ren@fictiefmail.com';
+UPDATE fitness.member SET review = 'Lifting is life met de hulp van Anna. Premium keuze!' WHERE email = 'luke.sky-lifter@fictiefmail.com';
+UPDATE fitness.member SET review = 'Ik kom alleen voor de basis en de pizza na de training.' WHERE email = 'chantal.pizza@fictiefmail.com';
+UPDATE fitness.member SET review = 'Basis lidmaatschap is genoeg als je alleen selfies maakt.' WHERE email = 'silvia.selfie@fictiefmail.com';
