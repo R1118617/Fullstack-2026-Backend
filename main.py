@@ -7,7 +7,7 @@ from routes import student4_endpoints
 middleware = [
     Middleware(
         CORSMiddleware,
-        allow_origins=['https://example.org'],
+        allow_origins=config.allowed_origins,
         allow_credentials=True,
         allow_methods=['*'],
         allow_headers=['*']

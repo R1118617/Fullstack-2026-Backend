@@ -10,4 +10,7 @@ allowed_origins = [
     "http://localhost",
     "https://localhost",
     "http://localhost:8001",
+    "http://127.0.0.1:8080",
+    "https://127.0.0.1:8080",
+    "https://wt1-ironclad.netlify.app/"
 ]
