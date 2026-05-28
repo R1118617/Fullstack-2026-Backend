@@ -35,5 +35,4 @@ WORKDIR /code/
 EXPOSE 8000
 
 # Start fastAPI app using Uvicorn
-#CMD ["ls", "-la"]
 CMD ["python", "-m",  "uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
