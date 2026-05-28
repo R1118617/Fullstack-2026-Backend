@@ -11,10 +11,17 @@ RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
 COPY ./config.py /code
 COPY ./database.py /code
 COPY ./main.py /code
-COPY --parents ./models/* /code/
-COPY --parents ./queries /code/.
-COPY --parents ./routes/. /code/.
-COPY --parents ./sql_files/. /code/.
+# COPY statements below is for docker local
+#COPY --parents ./models/* /code/
+#COPY --parents ./queries /code/.
+#COPY --parents ./routes/. /code/.
+#COPY --parents ./sql_files/. /code/.
+# COPY statements below are for github action (does not support --parent option), works definetely in another way regarding
+# subdirectories...
+COPY ./models /code/
+COPY ./queries /code/
+COPY ./routes /code/
+COPY ./sql_files /code/
 # If we had setup a subdir we could simply fullfill this task using:
 # COPY ./app /code
 
