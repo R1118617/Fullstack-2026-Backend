@@ -1,9 +1,13 @@
+-- Drop all tables if they exist
 DROP TABLE IF EXISTS fitness.attendants;
 DROP TABLE IF EXISTS fitness.grouplessons;
 DROP TABLE IF EXISTS fitness.planning;
 DROP SCHEMA IF EXISTS fitness;
 
+-- Create new database if it does not exist
 CREATE SCHEMA IF NOT EXISTS fitness;
+
+-- Create new tables if they don't exist
 CREATE TABLE IF NOT EXISTS fitness.grouplessons (
     grouplessonId serial PRIMARY KEY,
     name varchar(100) NOT NULL,
@@ -26,7 +30,7 @@ CREATE TABLE IF NOT EXISTS fitness.attendants (
 	attendants integer NOT NULL
 );
 
-
+-- Insert data into the tables to use...
 INSERT INTO fitness.grouplessons (name, maxAttendants, minAttendants) VALUES
 ('Spinning',5,20),
 ('Aerobics',5,20),
