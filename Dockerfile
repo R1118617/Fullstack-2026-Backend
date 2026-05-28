@@ -18,10 +18,10 @@ COPY ./main.py /code
 #COPY --parents ./sql_files/. /code/.
 # COPY statements below are for github action (does not support --parent option), works definetely in another way regarding
 # subdirectories...
-COPY ./models /code/
-COPY ./queries /code/
-COPY ./routes /code/
-COPY ./sql_files /code/
+COPY ./models/. /code/
+COPY ./queries/. /code/
+COPY ./routes/. /code/
+COPY ./sql_files/. /code/
 # If we had setup a subdir we could simply fullfill this task using:
 # COPY ./app /code
 
