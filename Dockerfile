@@ -1,7 +1,4 @@
-FROM python:3.10.0-alpine
-
-# Set workdirectory
-WORKDIR /code
+FROM python:3.10-slim
 
 # Copy requirements file and install dependencies
 COPY ./requirements.txt /code/requirements.txt
@@ -14,14 +11,22 @@ RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
 COPY ./config.py /code
 COPY ./database.py /code
 COPY ./main.py /code
-COPY ./models /code
-COPY ./queries /code
-COPY ./routes /code
+COPY --parents ./models/* /code/
+COPY --parents ./queries /code/.
+COPY --parents ./routes/. /code/.
+COPY --parents ./sql_files/. /code/.
 # If we had setup a subdir we could simply fullfill this task using:
 # COPY ./app /code
+
+# Environment variable (local testing)
+#ENV ALLOWED_ORIGINS=[https://localhost:8080,http://127.0.0.1:8080,https://127.0.0.1:8080]
+
+# Set workdirectory
+WORKDIR /code/
 
 #  Listen on port 8000 from outside the container
 EXPOSE 8000
 
 # Start fastAPI app using Uvicorn
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+#CMD ["ls", "-la"]
+CMD ["python", "-m",  "uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
