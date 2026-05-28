@@ -3,11 +3,6 @@ FROM python:3.10.0-alpine
 # Set workdirectory
 WORKDIR /code
 
-# Setup environment variables (because .env is not replicated)
-ENV DB_CONNECT=postgresql://${{ DB_CONNECT_USER }}:${{ DB_CONNECT_PASSWORD }}@${{ DB_CONNECT_URL }}/${{ DB_CONNECT_DATABASE }}?sslmode=require&channel_binding=require
-ENV DOCS_URL=/docs
-ENV ALLOWED_ORIGINS=[https://localhost:8080,http://127.0.0.1:8080,https://127.0.0.1:8080]
-
 # Copy requirements file and install dependencies
 COPY ./requirements.txt /code/requirements.txt
 
