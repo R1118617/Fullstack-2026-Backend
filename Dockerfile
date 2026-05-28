@@ -27,7 +27,7 @@ COPY ./sql_files /code/sql_files/
 
 # Environment variable (local testing)
 ENV ALLOWED_ORIGINS=[https://localhost:8080,http://127.0.0.1:8080,https://127.0.0.1:8080]
-ENV DB_CONNECT=postgresql://${{ secrets.DB_CONNECT_USER }}:${{ secrets.DB_CONNECT_PASSWORD }}@${{ secrets.DB_CONNECT_URL }}/${{ secrets.DB_CONNECT_DATABASE }}?sslmode=require&channel_binding=require
+#ENV DB_CONNECT=postgresql://${{ secrets.DB_CONNECT_USER }}:${{ secrets.DB_CONNECT_PASSWORD }}@${{ secrets.DB_CONNECT_URL }}/${{ secrets.DB_CONNECT_DATABASE }}?sslmode=require&channel_binding=require
 ENV DOCS_URL=/docs
 
 # Set workdirectory
