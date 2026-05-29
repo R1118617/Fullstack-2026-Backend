@@ -3,7 +3,7 @@ import config
 from fastapi.middleware.cors import CORSMiddleware
 from starlette.middleware import Middleware
 
-from config import db_connection
+#from config import db_connection
 from routes import student1_endpoints
 from routes import student2_endpoints
 from routes import student3_endpoints
@@ -12,8 +12,6 @@ from routes import student4_endpoints
 middleware = [
     Middleware(
         CORSMiddleware,
-        # allow_origins=['https://example.org'],  FOUT
-#        allow_origins=config.allowed_origins.split(","),
         allow_origins=config.allowed_origins,
         allow_credentials=True,
         allow_methods=['*'],
