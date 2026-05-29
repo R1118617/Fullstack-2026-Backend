@@ -27,7 +27,7 @@ def get_four_random_tips():
 
 
 # Get 4 random coaches info for student1page2.html
-# not really need
+# not really needed
 @router.get("/four_random_coaches")
 def get_four_random_coaches():
     query = st1_queries.four_random_coaches_query
