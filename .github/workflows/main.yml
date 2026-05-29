@@ -13,7 +13,7 @@ jobs:
       - name: Checkout repository code into runner
         uses: actions/checkout@v5
       - name: Build the Docker image
-        run: docker build -t --build-arg DB_CONNECT=${{ secrets.DB_CONNECT }} ${{ secrets.DOCKERHUB_USERNAME }}/devops-project-backend:latest .
+        run: docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/devops-project-backend:latest .
       - name: Log in to Docker Hub
         uses: docker/login-action@v4.2.0
         with:

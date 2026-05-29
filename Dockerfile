@@ -29,6 +29,10 @@ COPY ./sql_files /code/sql_files/
 ENV ALLOWED_ORIGINS=[https://localhost:8080,http://127.0.0.1:8080,https://127.0.0.1:8080]
 #ENV DB_CONNECT=postgresql://${{ secrets.DB_CONNECT_USER }}:${{ secrets.DB_CONNECT_PASSWORD }}@${{ secrets.DB_CONNECT_URL }}/${{ secrets.DB_CONNECT_DATABASE }}?sslmode=require&channel_binding=require
 ENV DOCS_URL=/docs
+ENV DB_CONNECT_USER=${{ secrets.DB_CONNECT_USER }}
+ENV DB_CONNECT_PASSWORD=${{ secrets.DB_CONNECT_PASSWORD }}
+ENV DB_CONNECT_URL={{ secrets.DB_CONNECT_URL }}
+ENV DB_CONNECT_DATABASE=${{ secrets.DB_CONNECT_DATABASE }}
 
 # Set workdirectory
 WORKDIR /code/
