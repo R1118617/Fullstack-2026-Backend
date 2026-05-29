@@ -13,7 +13,8 @@ middleware = [
     Middleware(
         CORSMiddleware,
         # allow_origins=['https://example.org'],  FOUT
-        allow_origins=config.allowed_origins.split(","),
+#        allow_origins=config.allowed_origins.split(","),
+        allow_origins=config.allowed_origins,
         allow_credentials=True,
         allow_methods=['*'],
         allow_headers=['*']
