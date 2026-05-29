@@ -21,3 +21,8 @@ jobs:
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
       - name: Push the image to Docker Hub
         run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/devops-project-backend:latest      
+      - name: Push the image to Render
+        uses: JorgeLNJunior/render-deploy@v1.5.0
+        with:
+          service_id: ${{ secrets.RENDER_SERVICE_ID }}
+          api_key: ${{ secrets.RENDER_API_KEY }}
