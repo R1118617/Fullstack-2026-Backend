@@ -6,7 +6,7 @@ on:
       - closed
 
 jobs:
-  if_merged:
+  build:
     if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
@@ -21,8 +21,14 @@ jobs:
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
       - name: Push the image to Docker Hub
         run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/devops-project-backend:latest      
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
       - name: Push the image to Render
         uses: JorgeLNJunior/render-deploy@v1.5.0
         with:
+          clear_cache: true
+          wait_deploy: true
           service_id: ${{ secrets.RENDER_SERVICE_ID }}
           api_key: ${{ secrets.RENDER_API_KEY }}
