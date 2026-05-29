@@ -24,7 +24,7 @@ VALUES (%s, %s, %s);
 """
 
 get_popup_list = """
-    SELECT 
+    SELECT
         a.afspraakid,
         a.klantnaam,
         a.datum,
