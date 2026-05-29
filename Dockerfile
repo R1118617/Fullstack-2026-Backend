@@ -1,3 +1,4 @@
+# Start from standard python-image
 FROM python:3.10-slim
 
 # Copy requirements file and install dependencies on container
