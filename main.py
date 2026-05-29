@@ -2,6 +2,8 @@ from fastapi import FastAPI
 import config
 from fastapi.middleware.cors import CORSMiddleware
 from starlette.middleware import Middleware
+
+from config import db_connection
 from routes import student1_endpoints
 from routes import student2_endpoints
 from routes import student3_endpoints
@@ -28,4 +30,6 @@ app.include_router(student4_endpoints.router)
 
 @app.get("/")
 def root():
+    print (db_connection)
+
     return {"message": "Hello, World!"}
