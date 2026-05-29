@@ -29,8 +29,9 @@ def attendants_in_lesson(planningId: int, lessonDate: datetime.date):
         data = result[0]
 
         # Create random number between result[1] and result[2] because no data is found for this lesson
-        # data[1] = minimum attendants, data[2] = maximum attendants for grouplesson
-        attendants = random.randint(data[1], data[2])
+        # data[1] = maximum attendants, data[2] = minimum attendants for grouplesson
+        attendants = random.randint(data[2], data[1])
+        print (attendants)
 
         # Random number of attendants is created; now save it in the database
         # print (planningId)
