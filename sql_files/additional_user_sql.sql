@@ -1,5 +1,5 @@
 -- Create a new user
-CREATE ROLE backend_usr PASSWORD '6D=L0Ah1#b1=&UB;-5v';
+CREATE ROLE backend_usr PASSWORD 'npg_08KHexgMVUlC';
 
 -- Grant connection access for this user
 GRANT CONNECT ON DATABASE neondb TO backend_usr;
