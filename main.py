@@ -30,6 +30,4 @@ app.include_router(student4_endpoints.router)
 
 @app.get("/")
 def root():
-    print (db_connection)
-
     return {"message": "Hello, World!"}
