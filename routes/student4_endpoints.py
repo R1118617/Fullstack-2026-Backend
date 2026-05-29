@@ -47,30 +47,31 @@ def attendants_in_lesson(planningId: int, lessonDate: datetime.date):
 
     return {"attendants": attendants}
 
+
 @router.post("/save_attendants")
 def save_attendants(attendants: Attendants):
     print (attendants.lessonDate)
     print (attendants.planningId)
     print (attendants.attendants)
     sqlQuery = queries.save_number_of_attendants
-    database.execute_sql_query(sqlQuery, query_parameters= (
+    database.execute_sql_query(sqlQuery, query_parameters=(
         attendants.planningId,
         attendants.lessonDate,
         attendants.attendants,
     ))
     return True
 
+
 @router.post("/update_attendants")
 def update_attendants(attendants: Attendants):
 
-    print (attendants.lessonDate)
-    print (attendants.attendants)
-    print (attendants.attendantsId)
+    print(attendants.lessonDate)
+    print(attendants.attendants)
+    print(attendants.attendantsId)
 
     sqlQuery = queries.update_number_of_attendants
-    database.execute_sql_query(sqlQuery, query_parameters= (
+    database.execute_sql_query(sqlQuery, query_parameters=(
         attendants.lessonDate,
         attendants.attendants,
         attendants.attendantsId
     ))
-
