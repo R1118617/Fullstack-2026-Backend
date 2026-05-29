@@ -22,10 +22,10 @@ def create_contact_message(message: models.ContactMessageCreate):
 @router.get("/contact")
 def get_contact_messages(reason: str = None):
     if reason:
-            result = database.execute_sql_query(
-                queries.query_get_messages_by_reason,
-                (reason,)
-            )
+        result = database.execute_sql_query(
+            queries.query_get_messages_by_reason,
+            (reason,)
+        )
     else:
         result = database.execute_sql_query(queries.query_get_all_messages)
 
