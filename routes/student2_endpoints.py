@@ -30,4 +30,3 @@ def get_contact_messages(reason: str = None):
         result = database.execute_sql_query(queries.query_get_all_messages)
 
     return {"messages": result}
-    #test
