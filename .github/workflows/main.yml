@@ -9,11 +9,13 @@ jobs:
   if_merged:
     if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
+    env:
+      DB_CONNECT: postgresql://${{ secrets.DB_CONNECT_USER }}:${{ secrets.DB_CONNECT_PASSWORD }}@${{ secrets.DB_CONNECT_URL }}/${{ secrets.DB_CONNECT_DATABASE }}?sslmode=require&channel_binding=require
     steps:
       - name: Checkout repository code into runner
         uses: actions/checkout@v5
       - name: Build the Docker image
-        run: docker build --build-arg DB_CONNECT_USER=${{ secrets.DB_CONNECT_USER }} --build-arg DB_CONNECT_PASSWORD=${{ secrets.DB_CONNECT_PASSWORD }} --build-arg DB_CONNECT_URL={{ secrets.DB_CONNECT_URL }} --build-arg DB_CONNECT_DATABASE=${{ secrets.DB_CONNECT_DATABASE }} -t ${{ secrets.DOCKERHUB_USERNAME }}/devops-project-backend:latest .
+        run: docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/devops-project-backend:latest .
       - name: Log in to Docker Hub
         uses: docker/login-action@v4.2.0
         with:
