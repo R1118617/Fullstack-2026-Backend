@@ -92,3 +92,4 @@ def update_attendants(attendants: Attendants):
         attendants.attendants,
         attendants.attendantsId
     ))
+    return True
