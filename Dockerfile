@@ -1,6 +1,6 @@
 FROM python:3.10-slim
 
-# Copy requirements file and install dependencies
+# Copy requirements file and install dependencies on container
 COPY ./requirements.txt /code/requirements.txt
 
 # Install necessary binaries
