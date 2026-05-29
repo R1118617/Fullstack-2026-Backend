@@ -20,9 +20,7 @@ middleware = [
     )
 ]
 
-#app = FastAPI()
-app = FastAPI(docs_url=config.documentation_url,middleware=middleware)
-
+app = FastAPI(docs_url=None, redoc_url=None, openapi_url=None,middleware=middleware)
 app.include_router(student1_endpoints.router)
 app.include_router(student2_endpoints.router)
 app.include_router(student3_endpoints.router)
