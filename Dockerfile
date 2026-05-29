@@ -22,8 +22,9 @@ COPY ./models /code/models/
 COPY ./queries /code/queries/
 COPY ./routes /code/routes/
 COPY ./sql_files /code/sql_files/
-# If we had setup a subdir we could simply fullfill this task using:
-# COPY ./app /code
+
+# If we had setup a subdir we could simply fullfill this task as mentioned below:
+#COPY ./app /code
 
 # Environment variable (local testing)
 ENV ALLOWED_ORIGINS=["https://localhost:63342","http://localhost:63342","http://localhost:8080","https://localhost:8080","http://127.0.0.1:8080","https://127.0.0.1:8080"]
