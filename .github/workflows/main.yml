@@ -9,8 +9,6 @@ jobs:
   if_merged:
     if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
-    env:
-      DB_CONNECT: postgresql://${{ secrets.DB_CONNECT_USER }}:${{ secrets.DB_CONNECT_PASSWORD }}@${{ secrets.DB_CONNECT_URL }}/${{ secrets.DB_CONNECT_DATABASE }}?sslmode=require&channel_binding=require
     steps:
       - name: Checkout repository code into runner
         uses: actions/checkout@v5
