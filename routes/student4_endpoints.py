@@ -7,6 +7,7 @@ import random
 
 router = APIRouter()
 
+
 @router.get("/actual_lessons")
 def actual_lessons(weekday:int,time:str):
     sqlQuery = queries.get_actual_lessons_query
@@ -43,7 +44,6 @@ def attendants_in_lesson(planningId: int, lessonDate: datetime.date):
         # Execute regular query to also retrieve id
         sqlQuery = queries.get_actual_attendants_at_lessons_query
         attendants = database.execute_sql_query(sqlQuery, query_parameters=(planningId, lessonDate,))
-
 
     return {"attendants": attendants}
 
