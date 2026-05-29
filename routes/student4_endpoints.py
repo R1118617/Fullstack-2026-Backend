@@ -9,16 +9,18 @@ router = APIRouter()
 
 
 @router.get("/actual_lessons")
-def actual_lessons(weekday:int,time:str):
+def actual_lessons(weekday: int, time: str):
     sqlQuery = queries.get_actual_lessons_query
-    result = database.execute_sql_query(sqlQuery, query_parameters=(weekday,time, time, ))
+    result = database.execute_sql_query(
+        sqlQuery, query_parameters=(weekday, time, time, ))
     return {"lessons": result}
 
 
 @router.get("/actual_attendants")
 def attendants_in_lesson(planningId: int, lessonDate: datetime.date):
     sqlQuery = queries.get_actual_attendants_at_lessons_query
-    attendants = database.execute_sql_query(sqlQuery, query_parameters=(planningId, lessonDate, ))
+    attendants = database.execute_sql_query(
+        sqlQuery, query_parameters=(planningId, lessonDate,))
 
     # If nothing found in database; pick a random number and
     # save it in the database
@@ -28,10 +30,10 @@ def attendants_in_lesson(planningId: int, lessonDate: datetime.date):
         # get course to find maximum attendants (so we cannot
         # generate a number higher than the max attendants allowed)
         print("No attendants found; create a randomized number \
-        and save it in the database for class ", \
-              planningId, "on lessondate ", lessonDate)
+        and save it in the database for class ", planningId,
+              "on lessondate ", lessonDate)
         sqlQuery = queries.get_lesson_information_on_planningId
-        result = database.execute_sql_query( \
+        result = database.execute_sql_query(
             sqlQuery, query_parameters=(planningId,))
         data = result[0]
 
@@ -47,12 +49,12 @@ def attendants_in_lesson(planningId: int, lessonDate: datetime.date):
         # print (lessonDate)
         # print (attendants)
         sqlQuery = queries.save_number_of_attendants
-        database.execute_sql_query(sqlQuery, query_parameters = \
-            (planningId, lessonDate, attendants, ))
+        database.execute_sql_query(sqlQuery, query_parameters=(
+            planningId, lessonDate, attendants,))
 
         # Execute regular query to also retrieve id
         sqlQuery = queries.get_actual_attendants_at_lessons_query
-        attendants = database.execute_sql_query( \
+        attendants = database.execute_sql_query(
             sqlQuery, query_parameters=(planningId, lessonDate,))
 
     return {"attendants": attendants}
