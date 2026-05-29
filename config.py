@@ -10,4 +10,4 @@ db_user = os.environ.get('DB_CONNECT_USER')
 db_password = os.environ.get('DB_CONNECT_PASSWORD')
 db_url = os.environ.get('DB_CONNECT_URL')
 db_dbname = os.environ.get('DB_CONNECT_DATABASE')
-db_connection = "postgresql://".db_user + ":" + db_password + "@" + db_url + "/"+ db_dbname + "?sslmode=require&channel_binding=require"
+db_connection = "postgresql://" + db_user + ":" + db_password + "@" + db_url + "/"+ db_dbname + "?sslmode=require&channel_binding=require"
