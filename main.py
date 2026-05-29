@@ -2,7 +2,7 @@ from fastapi import FastAPI
 import config
 from fastapi.middleware.cors import CORSMiddleware
 from starlette.middleware import Middleware
-#from config import db_connection
+# from config import db_connection
 from routes import student1_endpoints
 from routes import student2_endpoints
 from routes import student3_endpoints

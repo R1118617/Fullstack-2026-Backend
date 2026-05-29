@@ -15,7 +15,8 @@ def connect_to_database():
 def execute_sql_query(sql_query, query_parameters=None):
     connection = connect_to_database()
     if not connection:
-        raise HTTPException(status_code=500, detail="Database connection error")
+        raise HTTPException(status_code=500,
+                            detail="Database connection error")
 
     try:
         with connection:
@@ -26,12 +27,16 @@ def execute_sql_query(sql_query, query_parameters=None):
                     # Execute SELECT queries for GET requests
                     result = cursor.fetchall()
                 else:
-                    # Non-SELECT queries (INSERT, UPDATE, DELETE) are automatically  committed when the 'with connection' block finishes successfully
+                    # Non-SELECT queries (INSERT, UPDATE, DELETE) are
+                    # automatically  committed when the
+                    # 'with connection' block finishes successfully
                     result = True
                 return result
     except psycopg.Error as exception:
         print("Error executing SQL query:", exception)
-        raise HTTPException(status_code=500, detail="Database query execution error")
+        raise HTTPException(status_code=500,
+                            detail="Database query execution error")
     finally:
-        # The 'finally' block ensures the connection is closed even if an error occurred
+        # The 'finally' block ensures the connection is closed even
+        # if an error occurred
         connection.close()
