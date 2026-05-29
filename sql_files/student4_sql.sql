@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS fitness.attendants (
 );
 
 -- Insert data into the tables to use...
-INSERT INTO fitness.grouplessons (name, maxAttendants, minAttendants) VALUES
+INSERT INTO fitness.grouplessons (name, minAttendants, maxAttendants) VALUES
 ('Spinning',5,20),
 ('Aerobics',5,20),
 ('Steps',2,10),
