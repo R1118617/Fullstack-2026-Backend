@@ -31,4 +31,3 @@ def get_contact_messages(reason: str = None):
 
     return {"messages": result}
     #test
-
