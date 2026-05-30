@@ -19,7 +19,8 @@ def actual_lessons(weekday: int, time: str):
 
 @router.get("/actual_attendants")
 # Retrieves the actual attendants for a specific lesson on a specific date
-# The time is not that necessary since that is specified in the planning (using planningid)
+# The time is not that necessary since that is specified in another
+# (referenced) table
 def attendants_in_lesson(planningid: int, lessondate: datetime.date):
     sqlquery = queries.get_actual_attendants_at_lessons_query
     attendants = database.execute_sql_query(
