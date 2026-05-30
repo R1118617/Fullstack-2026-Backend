@@ -1,6 +1,7 @@
 from pydantic import BaseModel
 from datetime import datetime
 
+
 # Model voor inkomende data van contactformulier (post request)
 class ContactMessageCreate(BaseModel):
     name: str
@@ -8,6 +9,7 @@ class ContactMessageCreate(BaseModel):
     email: str
     message: str
     terms_accepted: bool
+
 
 class ContactMessageResponse(BaseModel):
     id: int
@@ -17,4 +19,3 @@ class ContactMessageResponse(BaseModel):
     message: str
     terms_accepted: bool
     created_at: datetime
-

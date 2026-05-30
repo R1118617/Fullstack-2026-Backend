@@ -12,13 +12,6 @@ RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
 COPY ./config.py /code
 COPY ./database.py /code
 COPY ./main.py /code
-# COPY statements below is for docker local
-#COPY --parents ./models/* /code/
-#COPY --parents ./queries /code/.
-#COPY --parents ./routes/. /code/.
-#COPY --parents ./sql_files/. /code/.
-# COPY statements below are for github action (does not support --parent option), works definetely in another way regarding
-# subdirectories...
 COPY ./models /code/models/
 COPY ./queries /code/queries/
 COPY ./routes /code/routes/
@@ -37,5 +30,5 @@ WORKDIR /code/
 #  Listen on port 8000 from outside the container
 EXPOSE 8000
 
-# Start fastAPI app using Uvicorn
+# Start the fastAPI app using Uvicorn after booting the container and listen on all IP's
 CMD ["python", "-m",  "uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]

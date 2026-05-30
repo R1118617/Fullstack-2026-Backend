@@ -1,6 +1,9 @@
 name: Check and publish backend
 
 on:
+#  push:
+#    branches:
+#      - main
   pull_request:
     types:
       - closed
@@ -13,14 +16,13 @@ jobs:
       - name: Checkout repository code into runner
         uses: actions/checkout@v5
       - name: Set up Python environment
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v6
         with:
           python-version: "3.10"
       - name: flake8 Lint
-#        uses: py-actions/flake8@v2b --exit-zero
         uses: TrueBrain/actions-flake8@v2
         with:
-          only_warn: 1 
+          only_warn: 1    # To get the warnings but continue so other members can finish their job
 
   deploy:
     needs: test

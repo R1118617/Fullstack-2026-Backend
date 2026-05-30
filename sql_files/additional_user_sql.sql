@@ -1,4 +1,4 @@
--- Create a new user
+-- Create a new user, this password is changed after creation for security-reasons.
 CREATE ROLE backend_usr PASSWORD '6D=L0Ah1#b1=&UB;-5v';
 
 -- Grant connection access for this user
