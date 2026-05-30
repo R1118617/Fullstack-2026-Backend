@@ -21,9 +21,8 @@ COPY ./sql_files /code/sql_files/
 #COPY ./app /code
 
 # Environment variable (local testing)
-# The DB_CONNECT string is stored in Render.
-# The setting DOCS_URL is not needed since we disabled the URL for security-reasons
-ENV ALLOWED_ORIGINS=["https://localhost:63342","http://localhost:63342","http://localhost:8080","https://localhost:8080","http://127.0.0.1:8080","https://127.0.0.1:8080"]
+ENV ALLOWED_ORIGINS=["https://wt1-ironclad.netlify.app","https://localhost:63342","http://localhost:63342","http://localhost:8080","https://localhost:8080","http://127.0.0.1:8080","https://127.0.0.1:8080"]
+ENV DOCS_URL=/docs
 
 # Set workdirectory
 WORKDIR /code/
