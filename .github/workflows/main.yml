@@ -1,16 +1,16 @@
 name: Check and publish backend
 
 on:
-  push:
-    branches:
-      - main
-#  pull_request:
-#    types:
-#      - closed
+#  push:
+#    branches:
+#      - main
+  pull_request:
+    types:
+      - closed
 
 jobs:
   test:
-#    if: github.event.pull_request.merged == true
+    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository code into runner
@@ -22,7 +22,7 @@ jobs:
       - name: flake8 Lint
         uses: TrueBrain/actions-flake8@v2
         with:
-          only_warn: 1 
+          only_warn: 1    # To get the warnings but continue so other members can finish their job
 
   deploy:
     needs: test
