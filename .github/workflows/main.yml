@@ -1,13 +1,16 @@
 name: Check and publish backend
 
 on:
-  pull_request:
-    types:
-      - closed
+  push:
+    branches:
+      - main
+#  pull_request:
+#    types:
+#      - closed
 
 jobs:
   test:
-    if: github.event.pull_request.merged == true
+#    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository code into runner
@@ -17,7 +20,6 @@ jobs:
         with:
           python-version: "3.10"
       - name: flake8 Lint
-#        uses: py-actions/flake8@v2b --exit-zero
         uses: TrueBrain/actions-flake8@v2
         with:
           only_warn: 1 
