@@ -13,22 +13,25 @@ middleware = [
         CORSMiddleware,
         allow_origins=config.allowed_origins,
         allow_credentials=True,
-        allow_methods=['*'],
+        allow_methods=['GET','POST'],
         allow_headers=['*']
     )
 ]
 
+# Disallow docs url for security
 app = FastAPI(
     docs_url=None,
     redoc_url=None,
     openapi_url=None,
     middleware=middleware)
+
+# Add student-specific routes
 app.include_router(student1_endpoints.router)
 app.include_router(student2_endpoints.router)
 app.include_router(student3_endpoints.router)
 app.include_router(student4_endpoints.router)
 
-
-@app.get("/")
-def root():
-    return {"message": "Hello, World!"}
+# Disable the default get
+# @app.get("/")
+# def root():
+#     return {"message": "Hello, World!"}
