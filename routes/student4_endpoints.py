@@ -76,7 +76,7 @@ def save_attendants(attendants: Attendants):
         attendants.lessonDate,
         attendants.attendants,
     ))
-    return True
+    return {"success": True}
 
 
 @router.post("/update_attendants")
@@ -93,3 +93,4 @@ def update_attendants(attendants: Attendants):
         attendants.attendants,
         attendants.attendantsId
     ))
+    return {"success": True}
