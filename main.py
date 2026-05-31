@@ -8,16 +8,18 @@ from routes import student2_endpoints
 from routes import student3_endpoints
 from routes import student4_endpoints
 
+# Setup allowed origins and the allowed methods
 middleware = [
     Middleware(
         CORSMiddleware,
         allow_origins=config.allowed_origins,
         allow_credentials=True,
-        allow_methods=['*'],
+        allow_methods=['GET','POST'],
         allow_headers=['*']
     )
 ]
 
+# Disable document link for security
 app = FastAPI(
     docs_url=None,
     redoc_url=None,
@@ -28,7 +30,7 @@ app.include_router(student2_endpoints.router)
 app.include_router(student3_endpoints.router)
 app.include_router(student4_endpoints.router)
 
-
-@app.get("/")
-def root():
-    return {"message": "Hello, World!"}
+# Disable default / url
+# @app.get("/")
+# def root():
+#    return {"message": "Hello, World!"}
