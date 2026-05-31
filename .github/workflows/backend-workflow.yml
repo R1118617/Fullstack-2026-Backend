@@ -1,0 +1,46 @@
+name: Check and publish backend
+
+on:
+#  push:
+#    branches:
+#      - main
+  pull_request:
+    types:
+      - closed
+
+jobs:
+  test:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository code into runner
+        uses: actions/checkout@v5
+      - name: Set up Python environment
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.10"
+      - name: flake8 Lint
+        uses: TrueBrain/actions-flake8@v2
+        with:
+          only_warn: 1    # To get the warnings but continue so other members can finish their job
+
+  deploy:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository code into runner
+        uses: actions/checkout@v5
+      - name: Build the Docker image
+        run: docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/devops-project-backend:latest .
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v4.2.0
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+      - name: Push the image to Docker Hub
+        run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/devops-project-backend:latest      
+      - name: Push the image to Render
+        uses: sws2apps/render-deployment@main #consider using pin for dependabot auto update
+        with:
+          serviceId: ${{ secrets.RENDER_SERVICE_ID }}
+          apiKey: ${{ secrets.RENDER_API_KEY }}
