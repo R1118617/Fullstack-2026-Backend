@@ -7,7 +7,6 @@ import random
 
 router = APIRouter()
 
-
 @router.get("/actual_lessons")
 # Retrieves the actual lessons on a given weekday at a given time
 def actual_lessons(weekday: int, time: str):
