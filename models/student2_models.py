@@ -1,3 +1,8 @@
+# Name: Rene
+# Class: Van Asch
+# R-number: r1089588
+# branch dat ik werk: rene-contactpagina
+
 from pydantic import BaseModel
 from datetime import datetime
 
@@ -19,3 +24,10 @@ class ContactMessageResponse(BaseModel):
     message: str
     terms_accepted: bool
     created_at: datetime
+
+class FAQItem(BaseModel):
+    id: int
+    question: str
+    answer: str
+
+
