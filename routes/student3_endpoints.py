@@ -32,7 +32,7 @@ def get_available_trainers():
     trainers = database.execute_sql_query(query)
     trainers_return = []
     for trainer in trainers:
-        trainers_return.append({"firstName": trainer[0], "lastName": trainer[1], "speciality": trainer[2]})
+        trainers_return.append({"trainerID": trainer[0],"firstName": trainer[1], "lastName": trainer[2], "speciality": trainer[3]})
     return trainers_return
 
 

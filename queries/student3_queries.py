@@ -2,6 +2,6 @@ random_review = "SELECT firstname, lastname, review FROM fitness.member WHERE re
 
 get_all_trainers= "SELECT firstname, lastname, speciality, availability FROM fitness.trainer"
 
-get_available_trainers= "SELECT firstname, lastname, speciality FROM fitness.trainer WHERE availability = TRUE"
+get_available_trainers= "SELECT trainerID, firstname, lastname, speciality FROM fitness.trainer WHERE availability = TRUE"
 
 create_new_member = "INSERT INTO fitness.member (lastname, firstname, email, membershipID, trainerID, review) VALUES (%s, %s, %s, %s, %s, %s);"
