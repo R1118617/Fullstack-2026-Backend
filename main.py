@@ -1,3 +1,8 @@
+# Name: Rene
+# Class: Van Asch
+# R-number: r1089588
+# branch dat ik werk: rene-contactpagina
+
 from fastapi import FastAPI
 import config
 from fastapi.middleware.cors import CORSMiddleware
