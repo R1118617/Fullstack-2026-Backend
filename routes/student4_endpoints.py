@@ -7,7 +7,6 @@ import random
 
 router = APIRouter()
 
-
 @router.get("/actual_lessons")
 # Retrieves the actual lessons on a given weekday at a given time
 def actual_lessons(weekday: int, time: str):
@@ -76,7 +75,7 @@ def save_attendants(attendants: Attendants):
         attendants.lessonDate,
         attendants.attendants,
     ))
-    return True
+    return {"success": True}
 
 
 @router.post("/update_attendants")
@@ -93,3 +92,4 @@ def update_attendants(attendants: Attendants):
         attendants.attendants,
         attendants.attendantsId
     ))
+    return {"success": True}
