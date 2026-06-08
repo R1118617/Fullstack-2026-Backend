@@ -30,4 +30,8 @@ class FAQItem(BaseModel):
     question: str
     answer: str
 
+class HoursItem(BaseModel):
+    days: str
+    time: str
+
 
