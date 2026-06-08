@@ -47,3 +47,15 @@ def get_faq():
             })
 
         return faq_list
+
+@router.get("/hours")
+def get_hours():
+        result = database.execute_sql_query(queries.query_get_hours)
+        hours_list= []
+        for item in result:
+            hours_list.append({
+                "days":item[0],
+                "time":item[1]
+            })
+
+        return hours_list

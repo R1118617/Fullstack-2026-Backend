@@ -32,3 +32,7 @@ query_get_faq_data =  """
                         SELECT id, question, answer
                         FROM fitness.faq;
                       """
+
+query_get_hours = """
+    SELECT days, time FROM fitness.hours;
+"""
