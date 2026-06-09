@@ -2,6 +2,7 @@
 DROP TABLE IF EXISTS fitness.attendants;
 DROP TABLE IF EXISTS fitness.grouplessons;
 DROP TABLE IF EXISTS fitness.planning;
+DROP TABLE IF EXISTS fitness.advantages;
 DROP SCHEMA IF EXISTS fitness;
 
 -- Create new database if it does not exist
@@ -28,6 +29,12 @@ CREATE TABLE IF NOT EXISTS fitness.attendants (
 	planningId integer NOT NULL,
 	lessonDate date NOT NULL,
 	attendants integer NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS fitness.advantages (
+    advantageId serial PRIMARY KEY,
+    title VARCHAR(30) NOT NULL,
+    description VARCHAR(120) NOT NULL
 );
 
 -- Insert data into the tables to use...
@@ -194,3 +201,15 @@ INSERT INTO fitness.planning (grouplessonId, weekday, startTime, endTime) VALUES
 ((SELECT grouplessonId FROM fitness.grouplessons WHERE NAME LIKE 'Kickboksen'), 6, '14:00', '15:00'),
 ((SELECT grouplessonId FROM fitness.grouplessons WHERE NAME LIKE 'Aerobics'), 6, '15:00', '16:00'),
 ((SELECT grouplessonId FROM fitness.grouplessons WHERE NAME LIKE 'Circuit training'), 6, '08:00', '17:00');
+
+INSERT INTO fitness.advantages (advantageid, title, description) VALUES
+(0,'Geen wachttijden','Je hoeft niet te wachten op toestellen of gewichten → je training verloopt sneller en efficiënter.'),
+(1,'Betere focus','Minder mensen betekent minder afleiding, waardoor je je beter kunt concentreren op je oefeningen.'),
+(2,'Rustigere omgeving','Minder lawaai en chaos zorgt voor een meer ontspannen trainingservaring.'),
+(3,'Meer ruimte','Je hebt meer plaats om oefeningen correct en veilig uit te voeren, vooral bij vrije gewichten.'),
+(4,'Flexibiliteit in je schema','Je hoeft je training niet aan te passen aan bezette apparaten.'),
+(5,'Minder stress','Een lege of rustige gym voelt vaak minder intimiderend, zeker voor beginners.'),
+(6,'Betere techniek','Doordat je niet hoeft te haasten, kun je je vorm en techniek beter controleren.'),
+(7,'Meer aandacht van trainers','Trainers hebben vaker tijd om je te helpen of tips te geven.'),
+(8,'Hygiënischer','Minder mensen = minder zweet op apparaten en een schonere omgeving.'),
+(9,'Hoger trainingsrendement','Omdat alles vlotter gaat, kun je je energie efficiënter gebruiken en vaak een betere workout behalen.');

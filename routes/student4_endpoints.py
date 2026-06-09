@@ -32,9 +32,9 @@ def attendants_in_lesson(planningid: int, lessondate: datetime.date):
     if not attendants:
         # get course to find maximum attendants (so we cannot
         # generate a number higher than the max attendants allowed)
-        print("No attendants found; create a randomized number \
-        and save it in the database for class ", planningid,
-              "on lessondate ", lessondate)
+        # print("No attendants found; create a randomized number \
+        # and save it in the database for class ", planningid,
+        #       "on lessondate ", lessondate)
         sqlquery = queries.get_lesson_information_on_planningId
         result = database.execute_sql_query(
             sqlquery, query_parameters=(planningid,))
@@ -93,3 +93,28 @@ def update_attendants(attendants: Attendants):
         attendants.attendantsId
     ))
     return {"success": True}
+
+
+@router.get("/advantages_for_quiet_trainings")
+def reasons_for_quiet_trainings():
+    # Choose 3 random numbers and select those advantages from the database
+
+    tips = random.sample(range(0,10),3)
+    #print(tips)
+
+    # Create an empty list
+    advantages = []
+
+    # Run through the 3 random picked numbers and add an item from the constant to the empty list
+    for tip in tips:
+        sqlquery = queries.query_get_three_advantages
+        queryAdvantage = database.execute_sql_query(
+            sqlquery, query_parameters=(tip,))
+        # Add the returned string to our list to return
+        advantages.extend(queryAdvantage)
+
+    # return
+    if len(advantages) == 3:
+        return {"advantages": advantages}
+    else:
+        return

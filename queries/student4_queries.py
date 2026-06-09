@@ -34,3 +34,7 @@ save_number_of_attendants = \
 update_number_of_attendants = \
     "UPDATE fitness.attendants SET lessonDate=%s, attendants=%s \
     WHERE attendantsId=%s;"
+
+# query to retrieve 3 advantages of quiet trainings
+query_get_three_advantages = \
+    "SELECT title, description FROM fitness.advantages WHERE advantageId=(%s);"
